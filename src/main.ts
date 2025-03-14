@@ -252,6 +252,23 @@ class TennisGame {
     // Initialize music gain node
     this.musicGain.gain.value = 0.2; // Set music volume
     this.musicGain.connect(this.audioContext.destination);
+    
+    // Start music by default
+    this.isMusicPlaying = true;
+    this.currentNoteIndex = 0;
+    this.nextNoteTime = this.audioContext.currentTime;
+
+    // Add instructions about music toggle
+    const musicInstructions = document.createElement('div');
+    musicInstructions.style.position = 'absolute';
+    musicInstructions.style.top = '50px';
+    musicInstructions.style.left = '50%';
+    musicInstructions.style.transform = 'translateX(-50%)';
+    musicInstructions.style.color = 'white';
+    musicInstructions.style.fontSize = '16px';
+    musicInstructions.style.fontFamily = 'Arial, sans-serif';
+    musicInstructions.textContent = 'Press M to toggle music';
+    document.body.appendChild(musicInstructions);
   }
 
   private playHitSound(): void {
